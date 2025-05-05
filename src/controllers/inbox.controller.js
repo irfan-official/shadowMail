@@ -2,7 +2,7 @@ import Imap from "imap";
 import { simpleParser } from "mailparser";
 import Email from "../models/email.model.js"; // MongoDB Email model
 
-export const receiveMail = async (req, res) => {
+export const inboxReceiveMail = async (req, res) => {
   const userEmail = req.user.email;
   try {
     if (!userEmail) {
@@ -20,7 +20,7 @@ export const receiveMail = async (req, res) => {
   }
 };
 
-export const sendMail = async (req, res) => {
+export const inboxSendMail = async (req, res) => {
   const userEmail = req.user.email;
   try {
     if (!userEmail) {
