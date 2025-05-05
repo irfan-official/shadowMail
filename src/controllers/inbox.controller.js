@@ -27,7 +27,7 @@ export const inboxReceiveMail = async (req, res) => {
 };
 
 export const inboxSendMail = async (req, res) => {
-  const userEmail = req.user.email;
+  const { userEmail } = req.body;
   try {
     if (!userEmail) {
       return res
