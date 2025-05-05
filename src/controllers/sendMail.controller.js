@@ -24,7 +24,7 @@ const sendMail = async (req, res) => {
   // Transporter configuration for sending emails
   const transporter = nodemailer.createTransport({
     host: "mail.irfans.dev", // Your SMTP server
-    port: 587, // SMTP port
+    port: 25, // SMTP port
     secure: false,
     auth: {
       user: user.email, // dynamic user
