@@ -3,7 +3,13 @@ import { simpleParser } from "mailparser";
 import Email from "../models/email.model.js"; // MongoDB Email model
 
 export const inboxReceiveMail = async (req, res) => {
-  const userEmail = req.user.email;
+  const { userEmail } = req.body;
+
+  if (!userEmail) {
+    return res
+      .status(400)
+      .json({ code: 3, success: false, error: "userEmail field is required" });
+  }
   try {
     if (!userEmail) {
       return res
