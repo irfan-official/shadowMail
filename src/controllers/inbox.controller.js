@@ -19,10 +19,14 @@ export const inboxReceiveMail = async (req, res) => {
     const inbox = await Email.find({ to: userEmail, type: "receive" }).sort({
       date: -1,
     });
-    res.json(inbox);
+    return res.status(200).json({
+      mails: inbox || [],
+    });
   } catch (error) {
     console.log("Error: ==>  ", error.message);
-    res.status(500).json({ code: 3, success: false, error: error.message });
+    return res
+      .status(500)
+      .json({ code: 3, success: false, error: error.message });
   }
 };
 
@@ -37,9 +41,13 @@ export const inboxSendMail = async (req, res) => {
     const inbox = await Email.find({ from: userEmail, type: "sent" }).sort({
       date: -1,
     });
-    res.json(inbox);
+    return res.status(200).json({
+      mails: inbox || [],
+    });
   } catch (error) {
     console.log("Error: ==>  ", error.message);
-    res.status(500).json({ code: 3, success: false, error: error.message });
+    return res
+      .status(500)
+      .json({ code: 3, success: false, error: error.message });
   }
 };
