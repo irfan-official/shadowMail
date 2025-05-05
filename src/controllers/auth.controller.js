@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 export const registerUser = async (req, res) => {
   let { username, password } = req.body;
 
-  username = username.trim();
+  username = username.trim() || "";
 
   if (!username || !password) {
     return res.status(400).json({
